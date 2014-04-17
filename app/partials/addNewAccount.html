@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div ng-controller="addNewAccountCtrl">
+    
+     <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3>Hey!</h3>
+        </div>
+        <div class="modal-body">
+        {{status}}
+            
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    
+    
+    
+<form>
+    <input type="text" placeholder="Name" name="name" ng-model="form.name" value="" />
+    <input type="password" placeholder="Password" ng-model="form.password" name="password" value="" />
+    <input type="submit" value="ADD" ng-click="addButtonClicked()"/>
+</form>
+    
+    </div>
+

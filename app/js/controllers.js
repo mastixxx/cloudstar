@@ -5,9 +5,43 @@
 
 var myControllers = angular.module('myApp.controllers', []);
 
-myControllers.controller('sipStationCtrl', function($scope, $http) {
+myControllers.controller('LoginCtrl', ['$scope', '$http', 'AuthService', '$location','$log', function($scope, $http, AuthService, $location, $log) {
+        // If user is logged in send them to home page
+        if (AuthService.getUserAuthenticated()) {
+            $location.path('/view1');
+        }
+
+        // attempt login to your api
+        $scope.attemptLogin = function() {
+         
+            var url = "ajax/login.php";
+          
+            var data = {name:$scope.name,password:$scope.password};  
+  
+            var ajaxRequest = $http.post(url,data);
+            
+            ajaxRequest.success(function(data){
+                $log.info(data);
+                if (data === '"OK"'){
+                         
+                    AuthService.setUserAuthenticated(true);
+                    $location.path('/view1');
+                }
+                else{
+                    AuthService.setUserAuthenticated(false);
+                    $location.path('/login');
+                }
+                
+        });
+
+            
+        };
+    }]);
+
+myControllers.controller('sipStationCtrl', function($scope, $http, $location) {
  
-   // Load all available tasks 
+ 
+   // Load all devices
   $scope.getSipStations = function (){  
       
     $scope.loading = true;

@@ -1,5 +1,5 @@
 <?php 
-define('DB_SERVER', '54.72.168.180');
+define('DB_SERVER', '54.72.157.121');
 define('DB_USERNAME', 'asterisk');
 define('DB_PASSWORD', 'asterisk');
 define('DB_DATABASE', 'asterisk');

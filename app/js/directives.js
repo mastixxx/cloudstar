@@ -3,9 +3,11 @@
 /* Directives */
 
 
-angular.module('myApp.directives', []).
-  directive('appVersion', ['version', function(version) {
+var myDirectives = angular.module('myApp.directives', []);
+
+myDirectives.directive('appVersion', ['version', function(version) {
     return function(scope, elm, attrs) {
       elm.text(version);
     };
   }]);
+

@@ -35,7 +35,13 @@ var myApp = angular.module('myApp', [
                 templateUrl: 'partials/sipStations.html',
                 controller: 'sipStationCtrl',
                 requireLogin: true
-            });
+            })
+            .when('/statistics', {
+                templateUrl: 'partials/statistics.html',
+                controller: 'statisticsCtrl',
+                requireLogin: true
+            })    
+        ;
 
         // If the url is unrecognized go to login
         $routeProvider.otherwise({

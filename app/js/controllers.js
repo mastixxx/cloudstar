@@ -87,17 +87,31 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http) 
         }
       }
     });
-      
-      
   });
-
-
-
-  
   };
-  
-
-  
+ });
+ 
+ myControllers.controller( 'statisticsCtrl', function ($scope, $log, $http) {
+    $scope.getActiveCalls = function (){  
+        
+        $http.get("ajax/getActiveCalls.php").success(function(data){
+        $log.info(data);
+            $scope.activeCalls = data['calls'];
+        });
+        
+ };
+ 
+ $scope.getSipRegistrations = function (){  
+        
+        $http.get("ajax/getSipRegistrations.php").success(function(data){
+        $log.info(data);
+            $scope.onlinePeers = data['online'];
+        });
+        
+ };
+ 
+    $scope.getActiveCalls();
+    $scope.getSipRegistrations();
  });
  
  

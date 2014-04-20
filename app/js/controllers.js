@@ -113,7 +113,9 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http) 
         
         $http.get("ajax/getCpuLoad.php").success(function(data){
         $log.info(data);
+            
             $scope.cpuLoad = 100-data['idle'];
+            
         });
         
  };

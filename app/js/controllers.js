@@ -119,6 +119,10 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http) 
         });
         
  };
+ 
+ $scope.cpuLoad = 0;
+ $scope.activeCalls = 0;
+ $scope.onlinePeers = 0;
   $scope.getCpuLoad();
     $scope.getActiveCalls();
     $scope.getSipRegistrations();

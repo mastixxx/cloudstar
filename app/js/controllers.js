@@ -91,7 +91,7 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http) 
   };
  });
  
- myControllers.controller( 'statisticsCtrl', function ($scope, $log, $http) {
+ myControllers.controller( 'statisticsCtrl', function ($scope, $log, $http, $interval) {
     $scope.getActiveCalls = function (){  
         
         $http.get("ajax/getActiveCalls.php").success(function(data){
@@ -109,9 +109,24 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http) 
         });
         
  };
- 
+ $scope.getCpuLoad = function (){  
+        
+        $http.get("ajax/getCpuLoad.php").success(function(data){
+        $log.info(data);
+            $scope.cpuLoad = 100-data['idle'];
+        });
+        
+ };
+  $scope.getCpuLoad();
     $scope.getActiveCalls();
     $scope.getSipRegistrations();
+ $interval(function() {
+     $scope.getCpuLoad();
+    $scope.getActiveCalls();
+    $scope.getSipRegistrations();
+ },10000);
+ 
+    
  });
  
  

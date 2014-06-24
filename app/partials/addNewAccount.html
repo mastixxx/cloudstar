@@ -5,28 +5,54 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+
+<div>
+    <form class="form-horizontal">
+    <input type="text" class="input-lg" placeholder="Customer Name" name="customerName" ng-model="customerName" value="" />
     
-     <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3>Hey!</h3>
-        </div>
-        <div class="modal-body">
-        {{status}}
-            
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Device #</th><th>Device name</th><th>Password</th>
+            </tr>
+        </thead>
+                    <tr ng-repeat="dev in devices">
+                        <td>Device # {{dev.index}}</td>  
+                        <td>
+        
+                            <input type="text" ng-model="dev.name" placeholder="Device name"/></td>
+                        <td><input type="password" ng-model="dev.password" placeholder="Password"/> 
+                
+                </td></tr>
+</table>
+    
+    <button class="btn btn-primary" ng-click="addDevice()">
+        <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add device
+    </button>
     
     
-    
-<form>
-    <input type="text" placeholder="Name" name="name" ng-model="form.name" value="" />
-    <input type="password" placeholder="Password" ng-model="form.password" name="password" value="" />
-    <input type="submit" value="ADD" ng-click="addButtonClicked()"/>
+
+<!--    <input type="text" placeholder="Name" name="name" ng-model="form.name" value="" />
+    <input type="password" placeholder="Password" ng-model="form.password" name="password" value="" />-->
+
+<div class="form-group">
+<input type="submit" class="btn btn-primary" value="SUBMIT" ng-click="addButtonClicked()"/>
+</div>
 </form>
-    
+    </div>    
+       <div ng-show="items.createdStations">
+ Successfully added stations:
+            <ul>
+                <li ng-repeat="item in items.createdStations">
+                    {{ item }}
+                </li>
+            </ul>
+</div>
+<div ng-show="items.wrongStations.length > 0" >
 
-
+ Wrong added stations:
+            <ul>
+                <li ng-repeat="item in items.wrongStations">
+                    {{ item }}
+                </li>
+            </ul>
+ </div>

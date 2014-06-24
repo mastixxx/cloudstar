@@ -64,29 +64,66 @@ $scope.getSipStations();
  
 });
 
-myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http) {
+myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, $log) {
 
   var url = "ajax/addNewAccount.php";
   
-  $scope.addButtonClicked = function (data) {
+//  list zařízení pro daného zákazníka
+  $scope.devices = [{name:"",password:"",index:0}];
+  
+  
+  $scope.addDevice = function (){
+      var i=0;
+      i = $scope.devices.length;
+      $scope.devices.push({name:"",password:"",index:i});
+      
+  };
+  
+  var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+};
+   
+    
+$scope.addButtonClicked = function (data) {
 
 
-  var data = $scope.form;  
+  //var data = $scope.form;  
+  var jsonData = {devices:"",customerName:$scope.customerName};
+  jsonData.devices = ($scope.devices);
+  var ajaxRequest = $http.post(url,jsonData);
   
-  var ajaxRequest = $http.post(url,data);
   
-  ajaxRequest.success(function(data){
+  ajaxRequest.success(function(response){
+  //var response = { createdStations: ["sdf-"], wrongStations: ["asdasd","asdasda sdas"]};
+  $scope.items = response;
   
-  $scope.status = data; 
+  
+      
       var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
+      templateUrl: 'partials/myModalContent.html?u='+(new Date()).getTime(),
       controller: ModalInstanceCtrl,
+      size: 'lg',
       resolve: {
-      status: function () {
-          return $scope.status;
+        items: function () {
+          return $scope.items;
         }
+       
       }
     });
+  
+  
   });
   };
  });

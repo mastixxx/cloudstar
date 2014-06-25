@@ -63,7 +63,7 @@ var myApp = angular.module('myApp', [
 .controller('MainCtrl', ['$scope', 'AuthService', '$location', '$log', function($scope, AuthService, $location, $log) {
         
         $scope.getClass = function(path) {
-            $log.info('cesta je:' + $location.path().substr(0, path.length) + 'a moje cesta je:' + path);
+            
             if ($location.path().substr(0, path.length) === path) {
                 
                 return "active";

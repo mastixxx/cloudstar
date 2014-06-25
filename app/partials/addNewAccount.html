@@ -4,55 +4,60 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-
 <div>
     <form class="form-horizontal">
-    <input type="text" class="input-lg" placeholder="Customer Name" name="customerName" ng-model="customerName" value="" />
-    
+<!--     <input type="text" class="input-lg" placeholder="Customer Name" name="customerName" ng-model="customerName" value="" /> -->
+<div class="row-fluid">
+    <!-- LEFT MENU -->
+     
+    <div class="col-lg-3">
+        <input type="text" ng-model="selectedCustomerFiltr" class="form-control" placeholder="Customers filtr" >
+        <div class="list-group">
+          <a href="" class="list-group-item"
+           ng-repeat="customer in actualCustomers | filter : selectedCustomerFiltr"
+           ng-class="{'active': customer.name == selectedCustomer}" ng-click="selectCustomer(customer.name)">
+            {{customer.name}}
+          </a>
+        </div>
+
+  </div> <!-- END OF LEFT MENU -->
+  <div class="col-lg-9" ng-show="!!isCustomerSelected"><!-- RIGHT CONTENT -->
+    <h1> {{selectedCustomer}}</h1>
     <table class="table table-striped">
         <thead>
             <tr><th>Device #</th><th>Device name</th><th>Password</th>
             </tr>
         </thead>
-                    <tr ng-repeat="dev in devices">
-                        <td>Device # {{dev.index}}</td>  
-                        <td>
-        
-                            <input type="text" ng-model="dev.name" placeholder="Device name"/></td>
-                        <td><input type="password" ng-model="dev.password" placeholder="Password"/> 
-                
-                </td></tr>
-</table>
+        <tr ng-repeat="dev in devices">
+            <td>{{dev.id}}</td>  
+            <td>
+                <input type="text" ng-model="dev.name" placeholder="Device name"/ ng-change="deviceModified(dev.id)" ng-focus="focus($event)">
+            </td>
+            <td>
+                <input type="password" ng-model="dev.secret" placeholder="Password"/> 
+            </td>
+             <td> 
+                <button type="button"  class="btn btn-sm btn-danger" ng-click="removeDevice(dev.id,dev.name)"><i class="glyphicon glyphicon-remove-circle" ></i>&nbsp;Delete</button>
+            </td>
+        </tr>
+    </table>
     
     <button class="btn btn-primary" ng-click="addDevice()">
         <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add device
     </button>
-    
-    
 
-<!--    <input type="text" placeholder="Name" name="name" ng-model="form.name" value="" />
-    <input type="password" placeholder="Password" ng-model="form.password" name="password" value="" />-->
+        <button class="btn btn-success" ng-click="addDevice()" ng-show="modifiedDevices.length>0">
+        <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;SAVE CHANGES
+    </button>
+   
 
-<div class="form-group">
-<input type="submit" class="btn btn-primary" value="SUBMIT" ng-click="addButtonClicked()"/>
+
+  </div><!-- END RIGHT CONTENT -->
+
 </div>
+
+
+
 </form>
-    </div>    
-       <div ng-show="items.createdStations">
- Successfully added stations:
-            <ul>
-                <li ng-repeat="item in items.createdStations">
-                    {{ item }}
-                </li>
-            </ul>
-</div>
-<div ng-show="items.wrongStations.length > 0" >
-
- Wrong added stations:
-            <ul>
-                <li ng-repeat="item in items.wrongStations">
-                    {{ item }}
-                </li>
-            </ul>
- </div>
+</div>    
+      

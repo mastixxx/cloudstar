@@ -8,13 +8,15 @@ and open the template in the editor.
     <form class="form-horizontal">
 <!--     <input type="text" class="input-lg" placeholder="Customer Name" name="customerName" ng-model="customerName" value="" /> -->
 <div class="row-fluid">
-    <!-- LEFT MENU -->
-     
-    <div class="col-lg-3">
+
+    <div class="col-lg-3"><!-- LEFT MENU -->
+        <button class="btn btn-primary" ng-click="createNewCustomer()">
+          <i class="glyphicon glyphicon-plus"></i>&nbsp;Create New Customer
+        </button>
         <input type="text" ng-model="selectedCustomerFiltr" class="form-control" placeholder="Customers filtr" >
         <div class="list-group">
           <a href="" class="list-group-item"
-           ng-repeat="customer in actualCustomers | filter : selectedCustomerFiltr"
+           ng-repeat="customer in actualCustomers track by $index | filter : selectedCustomerFiltr"
            ng-class="{'active': customer.name == selectedCustomer}" ng-click="selectCustomer(customer.name)">
             {{customer.name}}
           </a>
@@ -28,7 +30,7 @@ and open the template in the editor.
             <tr><th>Device #</th><th>Device name</th><th>Password</th>
             </tr>
         </thead>
-        <tr ng-repeat="dev in devices">
+        <tr ng-repeat="dev in devices track by $index ">
             <td>{{dev.id}}</td>  
             <td>
                 <input type="text" ng-model="dev.name" placeholder="Device name"/ ng-change="deviceModified(dev.id)" ng-focus="focus($event)">
@@ -46,7 +48,7 @@ and open the template in the editor.
         <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add device
     </button>
 
-        <button class="btn btn-success" ng-click="addDevice()" ng-show="modifiedDevices.length>0">
+        <button class="btn btn-success" ng-click="saveChanges()" ng-show="modifiedDevices.length>0">
         <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;SAVE CHANGES
     </button>
    

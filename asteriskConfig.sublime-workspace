@@ -1,0 +1,175 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pro",
+				"process"
+			],
+			[
+				"fu",
+				"funkce"
+			],
+			[
+				"c",
+				"click"
+			],
+			[
+				"tit",
+				"titleBannerWindow"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/mastalir/Documents/learnnode/listDir.js",
+		"/Users/mastalir/Documents/learnnode/lsDir.js",
+		"/Users/mastalir/Documents/learnnode/myprogram.js",
+		"/Users/mastalir/Documents/sublime-project/angular-seed/node_modules/http-server/lib/http-server.js",
+		"/Users/mastalir/Documents/sublime-project/angular-seed/node_modules/http-server/bin/http-server",
+		"/Users/mastalir/Documents/sublime-project/angular-seed/app/js/app.js",
+		"/Users/mastalir/Documents/sublime-project/angular-seed/package.json",
+		"/test.js",
+		"/Users/mastalir/Downloads/angular-authentication-example-master/index.html",
+		"/Users/mastalir/Downloads/angular-authentication-example-master/app/app.js",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/UdpChannel.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/NetScanDialog.Designer.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/NetScanDialog.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/MultipartParser.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/DeviceInfo.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/CameraView.Designer.cs",
+		"/Volumes/C22AF5CF-7E09-4449-B861-A6597DC9668F-14644-00005344FD0CC093/hipeye-devel/HipEye2/SettingsWindow.xaml.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/CameraView.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/AsyncWebReader.cs",
+		"/Volumes/C6787220-087F-4181-AF43-65F8893265B8-12980-0000541F63C25F7F/hipeye-devel/HipEye2/SettingsData.cs",
+		"/Volumes/7B16C320-532C-4D34-8202-3FA858857CA1-6950-00002714607646B9/hipeye-devel/HipEyeLib/NetScanDialog.resx",
+		"/Volumes/DAC92657-A7EC-4708-AA5F-79F0A0BE3A5C-940-000003B736572283/hipeye-devel/HipEyeLib/NetScanDialog.cs",
+		"/Volumes/DAC92657-A7EC-4708-AA5F-79F0A0BE3A5C-940-000003B736572283/hipeye-devel/HipEyeLib/NetScanDialog.Designer.cs",
+		"/Applications/MAMP/htdocs/bootstrapPokus/index.html",
+		"/Applications/MAMP/htdocs/bootstrapPokus/index.php",
+		"/Applications/MAMP/htdocs/OleskoWoodstock/jslib/titleBanner.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"	\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 224.0,
+	"status_bar_visible": true
+}

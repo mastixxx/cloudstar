@@ -1,4 +1,4 @@
-<?
+<?php
 require_once 'db.php'; // The mysql database connection script
 
 $dataToDecode = file_get_contents("php://input");

@@ -1,4 +1,4 @@
-<?
+<?php
 require_once 'db.php'; // The mysql database connection script
 
 $query=mysql_query("select id, name, contact from customers") or die(mysql_error());

@@ -13,10 +13,10 @@ and open the template in the editor.
         <button class="btn btn-primary" ng-click="createNewCustomer()">
           <i class="glyphicon glyphicon-plus"></i>&nbsp;Create New Customer
         </button>
-        <input type="text" ng-model="selectedCustomerFiltr" class="form-control" placeholder="Customers filtr" >
+        <input type="text" ng-model="customerFiltr" class="form-control" placeholder="Customers filtr" >
         <div class="list-group">
           <a href="" class="list-group-item"
-           ng-repeat="customer in actualCustomers track by $index | filter : selectedCustomerFiltr"
+           ng-repeat="customer in actualCustomers  | filter : customerFiltr track by customer.id "
            ng-class="{'active': customer.name == selectedCustomer}" ng-click="selectCustomer(customer.name)">
             {{customer.name}}
           </a>

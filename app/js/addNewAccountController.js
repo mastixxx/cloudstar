@@ -11,16 +11,11 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
 
   $scope.isDataForCustomerReady = false;
 
-   $scope.selectedIndex = -1;
+  $scope.selectedIndex = -1;
+  
   $scope.devices = [{name:"",password:"",index:0}];
   
-  $http.get("ajax/getCustomers.php").success(function(data){
-
-        $scope.actualCustomers = data;
-        $scope.selectedCustomer = data[0].name;
-        getDevicesForCustomer();
-        
-    });
+  getCustomers();
 
   $scope.modifiedDevices = [];
 
@@ -98,7 +93,7 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
   });
 };
 
-  function getDevicesForCustomer(){
+function getDevicesForCustomer(){
      $http.get("ajax/getDevicesForCustomer.php?customerName="+$scope.selectedCustomer).success(function(data){
 
       if (data) {
@@ -113,7 +108,16 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
     });
   };
 
+function getCustomers(){
+  $http.get("ajax/getCustomers.php").success(function(data){
 
+        $scope.actualCustomers = data;
+        $scope.selectedCustomer = data[0].name;
+        getDevicesForCustomer();
+        
+    });
+
+}
 
 
 $scope.createNewCustomer = function(){
@@ -136,6 +140,9 @@ $scope.createNewCustomer = function(){
       var url = "ajax/addCustomer.php";
       var jsonData = {customerName:newCustomer.name,contact:newCustomer.contact};
       var saveChangesRequest = $http.post(url,jsonData);
+      saveChangesRequest.success(function(response){
+        getCustomers();
+      });
      
     }, function () {
       

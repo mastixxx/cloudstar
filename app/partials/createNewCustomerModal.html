@@ -3,15 +3,20 @@
         </div>
         <div  class="modal-body">
        <div>
+        <form name="myForm" >
         <div class="row">
-        <input type="text" ng-model="newCustomer.name" placeholder="Customer Name"/>
+            Customer name:
+        <input type="text" ng-model="newCustomer.name"  class="form-control header-elements-margin" placeholder="Customer Name"/>
         </div>
         <div class="row">
-        <input type="email" ng-model="newCustomer.contact" name="email" placeholder="Customer contact email"/>
+            Contact email:
+        <input type="email" ng-model="newCustomer.contact" name="email" required class="form-control header-elements-margin" placeholder="Customer contact email"/>
+    </form>
         </div>
             </div>
         </div>
+
         <div class="modal-footer">
-            <button class="btn btn-primary" ng-class="{disabled: !email.$valid}" ng-click="ok()">OK</button>
+            <button class="btn btn-primary" ng-class="{disabled: !myForm.email.$valid || !newCustomer.name}" ng-click="ok()">OK</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>

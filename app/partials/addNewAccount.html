@@ -19,12 +19,17 @@ and open the template in the editor.
            ng-repeat="customer in actualCustomers  | filter : customerFiltr track by customer.id "
            ng-class="{'active': customer.name == selectedCustomer}" ng-click="selectCustomer(customer.name)">
             {{customer.name}}
+
           </a>
         </div>
 
   </div> <!-- END OF LEFT MENU -->
+
   <div class="col-lg-9" ng-show="!!isCustomerSelected"><!-- RIGHT CONTENT -->
-    <h1> {{selectedCustomer}}</h1>
+    <h1> {{selectedCustomer}} <button type="button"  class="btn btn-sm btn-danger" ng-click="removeActualCustomer()">
+  <i class="glyphicon glyphicon-remove-circle" ></i> Delete this customer</button></h1>
+
+
     <table class="table table-striped">
         <thead>
             <tr><th>Device #</th><th>Device name</th><th>Password</th>

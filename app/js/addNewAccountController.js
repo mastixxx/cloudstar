@@ -38,7 +38,10 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
     var dev;
     for (var i=0; i < $scope.devices.length; i++) {
       if ($scope.devices[i].id ==id) {
-        addModifiedDeviceOnList($scope.devices[i]);
+        if (!isDeviceAlreadyOnList(id)) {
+          addModifiedDeviceOnList($scope.devices[i]);
+        }
+        
 
       }
 
@@ -46,6 +49,15 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
     
   };
 
+  function isDeviceAlreadyOnList(id){
+    for (var i = 0; i < $scope.modifiedDevices.length; i++) {
+      if ($scope.modifiedDevices[i].id=id){
+        return true;
+      }
+    }
+    return false;
+  
+  }
   function addModifiedDeviceOnList(device){
     
     if ($scope.modifiedDevices.length>0) {
@@ -96,6 +108,7 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
 function getDevicesForCustomer(){
      $http.get("ajax/getDevicesForCustomer.php?customerName="+$scope.selectedCustomer).success(function(data){
 
+      $scope.devices={};
       if (data) {
         $scope.isCustomerSelected = true;
         $scope.devices = data;
@@ -118,6 +131,19 @@ function getCustomers(){
     });
 
 }
+
+$scope.deleteThisCustomerBtn = function(){
+  var url = "ajax/removeCustomer.php";
+  var jsonData = {customerName:""};
+  jsonData.customerName = $scope.selectedCustomer;
+  var deleteCustomerRequest = $http.post(url,jsonData);
+
+  deleteCustomerRequest.success(function(response){
+    getCustomers();
+  });
+
+}
+
 
 
 $scope.createNewCustomer = function(){

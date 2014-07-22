@@ -7,7 +7,7 @@ and open the template in the editor.
 <div>
     <form class="form-horizontal">
 <!--     <input type="text" class="input-lg" placeholder="Customer Name" name="customerName" ng-model="customerName" value="" /> -->
-<div class="row-fluid">
+<div class="row-fluid" ng-controller="addNewAccountCtrl">
 
     <div class="col-lg-3"><!-- LEFT MENU -->
         <button class="btn btn-primary" ng-click="createNewCustomer()">
@@ -26,7 +26,7 @@ and open the template in the editor.
   </div> <!-- END OF LEFT MENU -->
 
   <div class="col-lg-9" ng-show="!!isCustomerSelected"><!-- RIGHT CONTENT -->
-    <h1> {{selectedCustomer}} <button type="button"  class="btn btn-sm btn-danger" ng-click="removeActualCustomer()">
+    <h1> {{selectedCustomer}} <button type="button"  class="btn btn-sm btn-danger" ng-click="deleteThisCustomerBtn()">
   <i class="glyphicon glyphicon-remove-circle" ></i> Delete this customer</button></h1>
 
 
@@ -38,10 +38,10 @@ and open the template in the editor.
         <tr ng-repeat="dev in devices track by $index ">
             <td>{{dev.id}}</td>  
             <td>
-                <input type="text" ng-model="dev.name" placeholder="Device name"/ ng-change="deviceModified(dev.id)" ng-focus="focus($event)">
+                <input type="text" ng-model="dev.name" placeholder="Device name" ng-change="deviceModified(dev.id)" ng-focus="focus($event)"/>
             </td>
             <td>
-                <input type="password" ng-model="dev.secret" placeholder="Set Password"/> 
+                <input type="password" ng-model="dev.secret" placeholder="Set Password" ng-change="deviceModified(dev.id)"/> 
             </td>
              <td> 
                 <button type="button"  class="btn btn-sm btn-danger" ng-click="removeDevice(dev.id,dev.name)"><i class="glyphicon glyphicon-remove-circle" ></i>&nbsp;Delete</button>

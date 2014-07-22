@@ -1,12 +1,12 @@
 <?php
 require_once 'db.php';
 
-
-
 $dataToDecode = file_get_contents("php://input");
  error_log($dataToDecode, 0);
 $data = json_decode($dataToDecode);
 
+$arrSuccesfullyCreatedStations = array();
+$arrNotCreatedStations = array();
 if(isset($data)){
     
     $customerName = $data->{'customerName'};
@@ -32,7 +32,7 @@ if(isset($data)){
                                 SET name='$name', secret='$password'
                                 WHERE id=$devId") or die(mysql_error());
 
-error_log("previousName: " . $previousName);
+
 
             $query2=mysql_query("UPDATE extensions_table 
                                  SET exten='" . $name . "',appdata='SIP/" . $name . ",30'

@@ -10,7 +10,7 @@ $arrNotCreatedStations = array();
 if(isset($data)){
     
     $customerName = $data->{'customerName'};
-    
+     
     $devices = $data->{'devices'};
     $numDevices = count($devices);
     
@@ -24,9 +24,9 @@ if(isset($data)){
 
         $previousName = getDeviceNameWithId($devId);
         
-        if($name && $password){
+        if($name){
 
-            
+            error_log($jsonDevice);
 
             $query=mysql_query("UPDATE sip_conf
                                 SET name='$name', secret='$password'

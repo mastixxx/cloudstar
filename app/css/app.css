@@ -61,6 +61,14 @@ padding-left: 3px;
     background-color: lightgreen;
 }
 
+.my-form-control{
+  width: 80%;
+  
+}
+
+.my-form-group{
+  margin-bottom: 0px;
+}
 .overlay{
   position: relative;
   top: 0;

@@ -29,7 +29,7 @@ and open the template in the editor.
     <h1> {{selectedCustomer}} <button type="button"  class="btn btn-sm btn-danger" ng-click="deleteThisCustomerBtn()">
   <i class="glyphicon glyphicon-remove-circle" ></i> Delete this customer</button></h1>
 
-
+<form class="form-inline" role="form">
     <table class="table table-striped">
         <thead>
             <tr><th>Device #</th><th>Device name</th><th>Password</th>
@@ -38,25 +38,32 @@ and open the template in the editor.
         <tr ng-repeat="dev in devices track by $index ">
             <td>{{dev.id}}</td>  
             <td>
-                <input type="text" ng-model="dev.name" placeholder="Device name" ng-change="deviceModified(dev.id)" ng-focus="focus($event)"/>
+               <div class="form-group my-form-group" ng-class="{ 'has-error': dev.nameIsDuplicit}">
+                  <input type="text"  class="form-control my-form-control" ng-model="dev.name" 
+                  placeholder="Device name" ng-change="deviceModified(dev.id,dev.name)"/>
+                </div>
             </td>
             <td>
-                <input type="password" ng-model="dev.secret" placeholder="Set Password" ng-change="deviceModified(dev.id)"/> 
+              <div class="form-group my-form-group">
+                <input type="password" class="form-control my-form-control" ng-model="dev.secret" placeholder="Set Password" ng-change="deviceModified(dev.id,dev.name)"/> 
+                </div>
             </td>
              <td> 
-                <button type="button"  class="btn btn-sm btn-danger" ng-click="removeDevice(dev.id,dev.name)"><i class="glyphicon glyphicon-remove-circle" ></i>&nbsp;Delete</button>
+                <button type="button"  class="btn btn-sm btn-danger" ng-click="removeDevice(dev.id,dev.name)"><i class="glyphicon glyphicon-remove-circle" ></i>
+                  &nbsp;Delete</button>
             </td>
         </tr>
     </table>
+
     
     <button class="btn btn-primary" ng-click="addDevice()">
         <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add device
     </button>
 
-        <button class="btn btn-success" ng-click="saveChanges()" ng-show="modifiedDevices.length>0">
+        <button class="btn btn-success" ng-click="saveChanges()" ng-show="modifiedDevices.length>0 && !numOfDuplicitNames>0">
         <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;SAVE CHANGES
     </button>
-   
+   </form>
 
 
   </div><!-- END RIGHT CONTENT -->

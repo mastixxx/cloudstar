@@ -12,8 +12,10 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
   $scope.isDataForCustomerReady = false;
 
   $scope.selectedIndex = -1;
+
+  $scope.numOfDuplicitNames = 0;
   
-  $scope.devices = [{name:"",password:"",index:0}];
+  $scope.devices = [{name:"",password:"",index:0,nameIsDuplicit:false}];
   
   getCustomers();
 
@@ -32,11 +34,27 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
     });
   };
 
-  $scope.deviceModified = function(id){
+//vola se pri zmene hodnoty jmena nebo hesla
+  $scope.deviceModified = function(id,name){
 
     var url = "ajax/modifyDevice.php";
     var dev;
+
+
+    isDeviceNameDuplicit(id,name);
+
+    if ($scope.numOfDuplicitNames>0) {
+    var modalInstance = $modal.open({
+        templateUrl: 'partials/nameDuplicateModal.html?u='+(new Date()).getTime(),
+        controller: duplicatedNameModalInstanceCtrl,
+        size: 'sm',
+        });
+      
+    }
+    
+    
     if (isDeviceAlreadyOnList(id)) {
+         countDuplicits();
       return 0;
     }
 
@@ -46,7 +64,18 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
           $scope.modifiedDevices.push($scope.devices[i]);  
         }
       }
+        countDuplicits();
   };
+
+  function countDuplicits(){
+    var duplicits = 0;
+    for (var i=0; i < $scope.devices.length; i++) {
+        if ($scope.devices[i].nameIsDuplicit == true) {
+          duplicits++;
+        }
+      }
+      $scope.numOfDuplicitNames = duplicits;
+  }
 
   function isDeviceAlreadyOnList(id){
     for (var i = 0; i < $scope.modifiedDevices.length; i++) {
@@ -116,6 +145,37 @@ function getCustomers(){
 
 }
 
+function isDeviceNameDuplicit(id,name){
+
+  
+  var duplicits = 0;
+  for (var i = $scope.devices.length - 1; i >= 0; i--) {
+    
+
+     if ($scope.devices[i].name == name && $scope.devices[i].id != id) {
+      duplicits++;
+
+    }
+    else{
+      //$scope.devices[i].nameIsDuplicit=false;
+    }
+  }
+
+       for (var i=0; i < $scope.devices.length; i++) {
+        if ($scope.devices[i].id ==id) {
+          if (duplicits>0){
+            $scope.devices[i].nameIsDuplicit=true;
+          }
+          else{
+            $scope.devices[i].nameIsDuplicit=false; 
+          }
+        }
+      }
+
+  countDuplicits();  
+  
+  };
+
 $scope.deleteThisCustomerBtn = function(){
   var url = "ajax/removeCustomer.php";
   var jsonData = {customerName:""};
@@ -127,8 +187,6 @@ $scope.deleteThisCustomerBtn = function(){
   });
 
 }
-
-
 
 $scope.createNewCustomer = function(){
   $scope.newCustomer= {};
@@ -156,7 +214,6 @@ $scope.createNewCustomer = function(){
      
     }, function () {
       
-      
     });
   
 }
@@ -173,8 +230,6 @@ var createNewCustomerModalInstanceCtrl = function ($scope, $modalInstance, newCu
     $modalInstance.dismiss('cancel');
   };
 };
-
-
 
 $scope.saveChanges = function (data) {
   var url = "ajax/saveChanges.php";
@@ -222,6 +277,16 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+};
+
+var duplicatedNameModalInstanceCtrl = function ($scope, $modalInstance) {
+
+  
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+
 };
 
 //SUBMIT DATA    

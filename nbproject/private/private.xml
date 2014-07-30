@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/partials/addNewAccount.html</file>
-            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/js/controllers.js</file>
-            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/partials/login.html</file>
             <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/js/app.js</file>
-            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/ajax/db.php</file>
+            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/partials/login.html</file>
             <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/partials/myModalContent.html</file>
+            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/js/controllers.js</file>
+            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/ajax/db.php</file>
+            <file>file:/Applications/MAMP/htdocs/asteriskConfig/app/partials/addNewAccount.html</file>
         </group>
     </open-files>
 </project-private>

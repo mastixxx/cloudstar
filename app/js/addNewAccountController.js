@@ -4,7 +4,6 @@
 myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, $log) {
 
   
-  
   $scope.isCustomerSelected = false;
 
   $scope.isSelectedCustomerNew = false;
@@ -125,6 +124,11 @@ function getDevicesForCustomer(){
       if (data) {
         $scope.isCustomerSelected = true;
         $scope.devices = data;
+        for (var i=0; i < $scope.devices.length; i++) {
+
+        $scope.devices[i].transport == "udp" ? $scope.devices[i].transport=true : $scope.devices[i].transport=false;
+        }
+
       }
       else{
         $scope.devices = [{name:"",password:"",index:0}];

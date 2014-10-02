@@ -32,7 +32,7 @@ and open the template in the editor.
 <form class="form-inline" role="form">
     <table class="table table-striped">
         <thead>
-            <tr><th>Device #</th><th>Device name</th><th>Password</th>
+            <tr><th>Device #</th><th>Device name</th><th>Password</th><th>Transport</th><th></th>
             </tr>
         </thead>
         <tr ng-repeat="dev in devices track by $index ">
@@ -47,6 +47,15 @@ and open the template in the editor.
               <div class="form-group my-form-group">
                 <input type="password" class="form-control my-form-control" ng-model="dev.secret" placeholder="Set Password" ng-change="deviceModified(dev.id,dev.name)"/> 
                 </div>
+            </td>
+            <td>
+              <div class="form-group my-form-group">
+             <toggle-switch ng-model="dev.transport" 
+             on-label="udp"
+              off-label="tcp"
+              ng-change="deviceModified(dev.id,dev.name)">
+             <toggle-switch>
+           </div>
             </td>
              <td> 
                 <button type="button"  class="btn btn-sm btn-danger" ng-click="removeDevice(dev.id,dev.name)"><i class="glyphicon glyphicon-remove-circle" ></i>

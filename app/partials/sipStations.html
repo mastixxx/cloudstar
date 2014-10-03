@@ -8,14 +8,22 @@
       
       
       <table class="table table-striped">
-          <thead><tr><th>#</th><th><a href="" ng-click="order = 'NAME'; reverse=!reverse">Station name</a></th>
-                  <th><a href="" ng-click="order = 'IPADDR'; reverse=!reverse">IP Address</a></th>
-                  <th><a href="" ng-click="order = 'FULLCONTACT'; reverse=!reverse">Full contact</a></th>
-                  <th></th></tr></thead>
+          <thead>
+            <tr><th>#</th>
+              <th><a href="" ng-click="order = 'NAME'; reverse=!reverse">Status</a></th>
+              <th><a href="" ng-click="order = 'NAME'; reverse=!reverse">Station name</a></th>
+              <th><a href="" ng-click="order = 'IPADDR'; reverse=!reverse">IP Address</a></th>
+              <th><a href="" ng-click="order = 'FULLCONTACT'; reverse=!reverse">Full contact</a></th>
+            <th></th></tr>
+            </thead>
           <tbody>
-            
-      <tr ng-repeat="station in sipStations | filter : filterStation | orderBy : order : reverse">
-              <td>{{station.ID}}</td><td>{{station.NAME}}</td><td>{{station.IPADDR}}</td><td>{{station.FULLCONTACT}}</td>
+              <tr ng-repeat="station in sipStations | filter : filterStation | orderBy : order : reverse">
+              <td>{{station.ID}}</td>
+              <td><div id="indicator-registered" ng-show="station.IPADDR"></div>
+                <div id="indicator-not-registered" ng-show="!station.IPADDR"></div></td>
+              <td>{{station.NAME}}</td>
+              <td>{{station.IPADDR}}</td>
+              <td>{{station.FULLCONTACT}}</td>
               <td> <button type="button"  class="btn btn-sm btn-danger" ng-click="removeDevice(station.ID,station.NAME)"><i class="glyphicon glyphicon-remove-circle" ></i>&nbsp;Delete</button></td>
           </tr>
           </tbody>

@@ -47,6 +47,9 @@ myControllers.controller('sipStationCtrl', function($scope, $http, $location) {
     $scope.loading = true;
     $http.get("ajax/getSipStations.php").success(function(data){
 
+        $scope.order = "IPADDR";
+        $scope.reverse = true;
+
         $scope.sipStations = data;
         $scope.loading = false;
     });

@@ -22,6 +22,8 @@ if(isset($data)){
 
         $devId = $jsonDevice->{'id'};
 
+        $jsonDevice->{'transport'} ? $transport = "udp" : $transport = "tcp";
+
         $previousName = getDeviceNameWithId($devId);
         
         if($name){
@@ -29,7 +31,7 @@ if(isset($data)){
             error_log($jsonDevice);
 
             $query=mysql_query("UPDATE sip_conf
-                                SET name='$name', secret='$password'
+                                SET name='$name', secret='$password', transport='$transport'
                                 WHERE id=$devId") or die(mysql_error());
 
 

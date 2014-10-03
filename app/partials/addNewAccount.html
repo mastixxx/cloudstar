@@ -35,7 +35,7 @@ and open the template in the editor.
             <tr><th>Device #</th><th>Device name</th><th>Password</th><th>Transport</th><th></th>
             </tr>
         </thead>
-        <tr ng-repeat="dev in devices track by $index ">
+        <tr ng-repeat="dev in devices | orderBy : 'id' track by $index">
             <td>{{dev.id}}</td>  
             <td>
                <div class="form-group my-form-group" ng-class="{ 'has-error': dev.nameIsDuplicit}">

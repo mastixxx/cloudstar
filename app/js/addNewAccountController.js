@@ -20,16 +20,21 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
 
   $scope.modifiedDevices = [];
 
+
+
   $scope.addDevice = function (){
+  //pridani noveho zarizeni na konec seznamu u aktualniho zakaznika
+
     var i=0;
     i = $scope.devices.length;
     $http.get("ajax/addNewDeviceForCustomer.php?customerId="+ getCustomerIdWithCustomerName($scope.selectedCustomer)).success(function(data){
-      $http.get("ajax/getDevicesForCustomer.php?customerName="+$scope.selectedCustomer).success(function(data){
+      // $http.get("ajax/getDevicesForCustomer.php?customerName="+$scope.selectedCustomer).success(function(data){
 
-        $scope.isCustomerSelected = true;
-        $scope.devices = data;
+      //   $scope.isCustomerSelected = true;
+      //   $scope.devices = data;
         
-      });
+      // });
+    getDevicesForCustomer();
     });
   };
 
@@ -58,7 +63,7 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
     }
 
     for (var i=0; i < $scope.devices.length; i++) {
-      if ($scope.devices[i].id ==id) {
+      if ($scope.devices[i].id == id) {
        
           $scope.modifiedDevices.push($scope.devices[i]);  
         }
@@ -98,8 +103,6 @@ myControllers.controller( 'addNewAccountCtrl', function ($scope, $modal, $http, 
       }
     }
   }
-
-
 
 //SELECT CUSTOMER
   $scope.selectCustomer = function (customerName){
@@ -238,7 +241,7 @@ var createNewCustomerModalInstanceCtrl = function ($scope, $modalInstance, newCu
 $scope.saveChanges = function (data) {
   var url = "ajax/saveChanges.php";
   var jsonData = {devices:"",customerName:""};
-  jsonData.devices = ($scope.modifiedDevices);
+  jsonData.devices = $scope.modifiedDevices;
   jsonData.customerName = $scope.selectedCustomer;
   var saveChangesRequest = $http.post(url,jsonData);
   

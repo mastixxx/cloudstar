@@ -24,7 +24,7 @@ var myApp = angular.module('myApp', [
                 requireLogin: false
             })
 
-            .when('/view2', {
+            .when('/manageDevices', {
                 templateUrl: 'partials/addNewAccount.html',
                 controller: 'addNewAccountCtrl',
 
@@ -32,7 +32,7 @@ var myApp = angular.module('myApp', [
                 requireLogin: true
             })
 
-            .when('/view1', {
+            .when('/listOfStations', {
                 templateUrl: 'partials/sipStations.html',
                 controller: 'sipStationCtrl',
                 requireLogin: true

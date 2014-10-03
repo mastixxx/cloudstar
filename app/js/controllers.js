@@ -8,7 +8,7 @@ var myControllers = angular.module('myApp.controllers', []);
 myControllers.controller('LoginCtrl', ['$scope', '$http', 'AuthService', '$location','$log', function($scope, $http, AuthService, $location, $log) {
         // If user is logged in send them to home page
         if (AuthService.getUserAuthenticated()) {
-            $location.path('/view1');
+            $location.path('/listOfStations');
         }
 
         // attempt login to your api
@@ -25,7 +25,7 @@ myControllers.controller('LoginCtrl', ['$scope', '$http', 'AuthService', '$locat
                 if (data === '"OK"'){
                          
                     AuthService.setUserAuthenticated(true);
-                    $location.path('/view1');
+                    $location.path('/listOfStations');
                 }
                 else{
                     AuthService.setUserAuthenticated(false);
